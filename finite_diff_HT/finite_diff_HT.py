@@ -53,7 +53,11 @@ nx = x + 1 + bdry_offset
 ny = y + 1 + bdry_offset
 nz = z
 
-Temp = np.zeros((ny, nx)) + T_INF
-Temp_old = np.copy(Temp)
+### defining empty matrices
+Temp = np.zeros((nz, ny, nx)) + T_INF # initial temperature of substrate set to ambient temperature
+Temp_old = np.copy(Temp) # copying temperature matrix for the time algorithm
+Q_in = np.zeros((nz, ny, nx)) # heat-flux-in matrix
+Q_net = np.zeros((nz, ny, nx)) # net heat-flux-in for the substrate
+
 
 
