@@ -23,7 +23,10 @@
   <ItemGroup>
     <Compile Include="finite_diff_HT.py" />
     <Compile Include="Toolpaths\path_printer.py" />
+    <Compile Include="Toolpaths\path_selector.py" />
+    <Compile Include="Toolpaths\random_path.py" />
     <Compile Include="Toolpaths\raster.py" />
+    <Compile Include="Toolpaths\spiral.py" />
     <Compile Include="Toolpaths\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>

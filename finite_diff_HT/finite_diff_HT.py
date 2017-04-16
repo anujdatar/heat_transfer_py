@@ -15,6 +15,9 @@ matplotlib.use('Agg') # enables backend plotting, on headless devices,
 ## - but need the python Gtk package installed
 import matplotlib.pyplot as plt
 
+# import custom modules
+from Toolpaths import path_select
+
 PI = math.pi
 ### define material properties
 C_P = 564 # heat capacity (J/kgK)
@@ -52,3 +55,5 @@ nz = z
 
 Temp = np.zeros((ny, nx)) + T_INF
 Temp_old = np.copy(Temp)
+
+
