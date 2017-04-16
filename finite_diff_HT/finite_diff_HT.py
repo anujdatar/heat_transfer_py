@@ -52,5 +52,3 @@ nz = z
 
 Temp = np.zeros((ny, nx)) + T_INF
 Temp_old = np.copy(Temp)
-
-

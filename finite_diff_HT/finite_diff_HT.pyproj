@@ -22,13 +22,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="finite_diff_HT.py" />
-    <Compile Include="Toolpaths\path_selector.py" />
+    <Compile Include="Toolpaths\path_printer.py" />
     <Compile Include="Toolpaths\raster.py" />
     <Compile Include="Toolpaths\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Toolpaths\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".pylintrc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
