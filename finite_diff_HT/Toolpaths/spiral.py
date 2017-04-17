@@ -6,10 +6,10 @@ Starts in the center and spirals outwards.
 @author: anuj.datar@gmail.com
 """
 
-import numpy as np
 import math
+import numpy as np
 
-def spi_dirn(dire,nc):
+def spi_dirn(dire, nc):
     """Function to define direction in a spiral tool-path.
 
     Function to find new direction for laser scan, and the new dx & dy
@@ -54,7 +54,7 @@ def spi_dirn(dire,nc):
 ##############################################################################
 
 
-def spiral_path(m,n):
+def spiral_path(m, n):
     """Function to define a raster tool-path.
 
     define a spiral path based on input grid size at present it only works
@@ -69,14 +69,14 @@ def spiral_path(m,n):
         tpath: A random tool-path, with a shader to plot in contourf
     """
     nm = n*m
-    nm1 = (n-1)*(m-1)
+    nm1 = (n-1) * (m-1)
 
     # matrices for xand y coordinates of path
     px = np.zeros(nm)
     py = np.zeros(nm)
     sm = np.zeros(nm)
     # output path matrix
-    tpath = np.zeros((nm,3))
+    tpath = np.zeros((nm, 3))
 
     # find center of grid for starting point of the spiral
     xmid = math.ceil(n/2)
@@ -100,7 +100,7 @@ def spiral_path(m,n):
 
         # use the dirn function to find dx, dy, new direction and direction
         # tc is the loop checker
-        (dx, dy, ndirn, tc)  = spi_dirn(dirn,tc)
+        dx, dy, ndirn, tc = spi_dirn(dirn, tc)
 #        print(ndirn,tc)
 
         # find new x and y coordinates for spiral
@@ -129,7 +129,7 @@ def spiral_path(m,n):
                     exists = 1
 
         if exists == 0:
-            if (nx>0) & (ny>0):
+            if (nx > 0) & (ny > 0):
                 shader = shader + 1
                 px[i] = nx
                 py[i] = ny
@@ -147,10 +147,9 @@ def spiral_path(m,n):
     px[nm1-1] = nx1
     py[nm1-1] = ny1
 
-    for k in range(0,nm):
-        tpath[k,0] = py[k] - 1
-        tpath[k,1] = px[k] - 1
-        tpath[k,2] = sm[k]
+    for k in range(0, nm):
+        tpath[k, 0] = py[k] - 1
+        tpath[k, 1] = px[k] - 1
+        tpath[k, 2] = sm[k]
 
     return tpath
-
