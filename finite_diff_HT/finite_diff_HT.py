@@ -10,13 +10,14 @@ import math
 import numpy as np
 
 import matplotlib
-matplotlib.use('Agg') # enables backend plotting, on headless devices,
-## device w/o display - eg. ssh can also use GTK or GTKAgg
-## - but need the python Gtk package installed
+matplotlib.use('Agg') # enables backend/headless plotting
+## Can use GTK or GTKAgg - but need Gtk package
 import matplotlib.pyplot as plt
 
 # import custom modules
 from Toolpaths import path_select
+from Matrices import coeff_matrices
+from Matrices import coeff_matrix_time
 
 PI = math.pi
 ### define material properties
@@ -53,11 +54,37 @@ nx = x + 1 + bdry_offset
 ny = y + 1 + bdry_offset
 nz = z
 
+### setup coefficient matrices
+A_matrix = coeff_matrices(K, dx, dy, dz)
+A_matrix_time = coeff_matrix_time(A_matrix, RHO, C_P, dt)
+
+### iterative algorithm parameters
+MAX_IN_ITER = 10 # max number of inner iterations
+MAX_OUT_ITER = 1000 # max number of outer iterations
+UPDATE_TARG = 0.01 # % update in solution, inner norm for GS-SOR
+EPSIT = 1e-12 # very small number
+RES_LARGE = 1e16 # for divergence check
+OMEGA = 1.8 # relaxation parameter for GS-SOR
+
 ### defining empty matrices
-Temp = np.zeros((nz, ny, nx)) + T_INF # initial temperature of substrate set to ambient temperature
+Temp = np.zeros((nz, ny, nx)) + T_INF # initial temperature set to ambient
 Temp_old = np.copy(Temp) # copying temperature matrix for the time algorithm
 Q_in = np.zeros((nz, ny, nx)) # heat-flux-in matrix
 Q_net = np.zeros((nz, ny, nx)) # net heat-flux-in for the substrate
 
 
+start_timer = time.clock()
+curr_time = 0
+while curr_time < dt:
 
+    outer_iter = 0
+    outer_norm = EPSIT
+    outer_update = 100 * outer_norm
+    resid_max = 0
+
+    while outer_iter < MAX_OUT_ITER and outer_update > outer_norm:
+        curr_time += dt/4
+
+
+
+        Q_net = Q_in

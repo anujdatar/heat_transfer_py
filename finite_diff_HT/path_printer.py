@@ -7,7 +7,7 @@ Created: 4/15/2017
 import numpy as np
 import matplotlib.pyplot as plt
 
-from path_selector import path_select
+from Toolpaths import path_select
 
 x = 5
 y = 5

@@ -22,7 +22,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="finite_diff_HT.py" />
-    <Compile Include="Toolpaths\path_printer.py" />
+    <Compile Include="Matrices\coefficient_matrices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Matrices\source_matrix.py" />
+    <Compile Include="Matrices\__init__.py" />
+    <Compile Include="path_printer.py" />
     <Compile Include="Toolpaths\path_selector.py" />
     <Compile Include="Toolpaths\random_path.py" />
     <Compile Include="Toolpaths\raster.py" />
@@ -31,6 +36,7 @@
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Matrices\" />
     <Folder Include="Toolpaths\" />
   </ItemGroup>
   <ItemGroup>
