@@ -1,0 +1,7 @@
+{
+  "error_messages": {
+    "no_material_name": "Please enter material name.",
+    "existing_material": "Material \"%s\" already exists in database.\n Would you like to as \"%s\"?"
+  }
+
+}

@@ -1,0 +1,26 @@
+{
+    "test 1": {
+        "one": 1,
+        "two": 2
+    },
+    "test 2": {
+        "one": "a",
+        "two": "b"
+    },
+    "test 3": {
+        "two": 2.2
+    },
+    "Titanium": {
+        "Conductivity": 19,
+        "sp ht": 500
+    },
+    "Stainless Steel": {
+        "Density": 500,
+        "Conductivity": 5,
+        "sp heat": 7500
+    },
+    "copper": {
+        "Density": 3000,
+        "melt pt": 800
+    }
+}
