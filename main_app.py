@@ -21,8 +21,14 @@ class MainApp(object):
         master.title("Heat Transfer Simulation")
 
         self.new_material_window_open = False
+        self.about_info_window_open = False
 
-        # define variables, and objects
+        # %%%%%%%%%%%%%%%%%% define variables, and objects
+        # menu related variables
+        self.menu_bar = None
+        self.file_menu = None
+        self.edit_menu = None
+        # new material window variables
         self.topbox_new_material = None
         self.new_material_window = None
 
@@ -55,27 +61,22 @@ class MainApp(object):
         self.button_print_test = ttk.Button(self.frame_main,
                                             text='Test Print',
                                             command=self.test_print)
-        self.button_print_test.grid(row=5, column=2, padx=5, pady=5, sticky='w')
+        self.button_print_test.grid(row=5, column=2, padx=5, pady=5, sticky='e')
 
-        self.button_add_new_material = ttk.Button(self.frame_main,
-                                                  text='Add/Edit Materials',
-                                                  command=self.launch_new_material_window)
-        self.button_add_new_material.grid(row=5, column=2, padx=5, pady=5)
-
-        self.button_close_all = ttk.Button(self.frame_main,
-                                           text='Quit',
-                                           command=self.close_all)
-        self.button_close_all.grid(row=5, column=2, padx=5, pady=5, sticky='e')
+        self.generate_menu()
 
     def generate_menu(self):
-        self.menubar = tk.Menu(self.master)
+        self.menu_bar = tk.Menu(self.master)
 
-        self.file_menu = tk.Menu(self.menubar, tearoff=0)
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.file_menu.add_separator()
         self.file_menu.add_command(label='Exit', command=self.close_all)
+        self.menu_bar.add_cascade(label='File', menu=self.file_menu)
 
-        self.edit_menu = tk.Menu(self.menubar, tearoff=0)
+        self.edit_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.edit_menu.add_command(label='Add/Edit Material', command=self.launch_new_material_window)
+        self.menu_bar.add_cascade(label='Edit', menu=self.edit_menu)
+        self.master.config(menu=self.menu_bar)
 
     def test_print(self):
         print(self.material_frame.material_name)
@@ -95,6 +96,16 @@ class MainApp(object):
 
         self.topbox_new_material.focus()
         self.new_material_window.combo_material_name.focus()
+
+    def about_info_window(self):
+        if self.about_info_window_open is True:
+            self.topbox_about_window.destroy()
+            self.about_info_window_open = False
+        self.about_info_window_open = True
+
+        self.topbox_about_window = tk.Toplevel(self.master)
+        self.topbox_about_window.transient(self.master)
+
 
 
 root = tk.Tk()
