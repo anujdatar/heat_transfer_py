@@ -2,43 +2,29 @@
 
 import sys
 from PyQt5 import QtWidgets as Qtw
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import pyqtSlot
+from PyQt5 import QtGui as Qtg
 
 
-class App(Qtw.QMainWindow):
+class SampleMain(Qtw.QMainWindow):
 
-    def __init__(self):
+    def __init__(self, width=640, height=480):
         super().__init__()
-        self.setWindowTitle('PyQt5 sample')
-        self.setGeometry(50, 50, 1280, 720)
+
+        self.setWindowTitle('Sample Window')
+        self.setGeometry(50, 50, width, height)
         self.statusBar().showMessage('Welcome')
 
-        # %%%%%%%%%% menu
         GenerateMenu(self)
-
-        self.main_widget = Qtw.QWidget()
-
-        # %%%%%%% material frame
-        self.material_form = Qtw.QGroupBox(
-            "Material Selection", self.main_widget)
-        layout = Qtw.QFormLayout(self.main_widget)
-        layout.addRow(Qtw.QLabel('aaaa'), Qtw.QLineEdit())
-        self.material_form.setLayout(layout)
-
-        # %%%%%%%%%% quit button
-        button_quit = Qtw.QPushButton('Quit', self)
-        button_quit.setToolTip('Close Program')
-        button_quit.move(500, 500)
-        # button_quit.resize(100, 100)
-        button_quit.clicked.connect(self.close)
 
         self.show()
 
-    @pyqtSlot(bool)
-    def close_all(self):
-        print('yay something worked')
-        sys.exit()
+
+class SampleForm(Qtw.QWidget):
+
+    def __init__(self, parent=None):
+        super().__init__()
+
+        self.parent = parent
 
 
 class GenerateMenu:
@@ -56,7 +42,7 @@ class GenerateMenu:
         edit_menu.addAction(option_new_material)
 
         # %%%%%%%%%%%%%% exit button
-        option_exit = Qtw.QAction(QIcon('exit24.png'), 'Exit', self.parent)
+        option_exit = Qtw.QAction('Exit', self.parent)
         option_exit.setShortcut('Ctrl+Q')
         option_exit.setStatusTip('Exit application')
         option_exit.triggered.connect(self.parent.close)
@@ -69,5 +55,5 @@ class GenerateMenu:
 
 if __name__ == '__main__':
     app = Qtw.QApplication(sys.argv)
-    ex = App()
+    ex = SampleMain()
     sys.exit(app.exec_())
