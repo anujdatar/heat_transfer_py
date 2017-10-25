@@ -32,7 +32,7 @@ class SampleForm(QWidget):
         self.parent = parent
 
         self.label_density = QLabel('Density', self.parent)
-        self.label_density.move(100, 100)
+        # self.label_density.move(100, 100)
 
 
 class GenerateMenu:
