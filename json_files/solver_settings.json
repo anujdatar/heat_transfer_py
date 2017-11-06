@@ -1,7 +1,0 @@
-{
-  "Gauss-Seidel" : {
-    "convergence_criterion" : 1e-12,
-    "maximum_iterations" : 1000,
-    "relaxation_param" : 1.8
-  }
-}

@@ -1,7 +1,0 @@
-{
-    "LaserPower": 100,
-    "LaserSpotSize": 0.0002,
-    "LaserScanningVelocity": 0.4,
-    "AmbientTemperature": 800,
-    "ConvectiveCoefficient": 5
-}
