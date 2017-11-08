@@ -12,7 +12,7 @@ from .gui_files_tkinter import GenerateSolverFrame
 # from material_class_file import MaterialProperties
 
 
-class MainApp(object):
+class MainAppTk(object):
     def __init__(self, master=None):
         self.master = master
 
@@ -109,7 +109,7 @@ class MainApp(object):
         self.topbox_about_window = tk.Toplevel(self.master)
         self.topbox_about_window.transient(self.master)
 
-if __name__ == '__main__':
-    root = tk.Tk()
-    MainApp(root)
-    root.mainloop()
+# if __name__ == '__main__':
+#     root = tk.Tk()
+#     MainAppTk(root)
+#     root.mainloop()

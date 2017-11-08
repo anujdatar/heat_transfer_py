@@ -4,10 +4,10 @@
 
 import tkinter as tk
 
-from scripts import MainApp
+from scripts import MainAppTk
 
 
 if __name__ == '__main__':
     root = tk.Tk()
-    MainApp(root)
+    MainAppTk(root)
     root.mainloop()

@@ -1,3 +1,5 @@
-from .main_app_tkinter import MainApp
+from .main_app_tkinter import MainAppTk
+from .main_app_pyQt import MainAppQt
 
-__all__ = ['MainApp']
+
+__all__ = ['MainApp', 'MainAppQt']
