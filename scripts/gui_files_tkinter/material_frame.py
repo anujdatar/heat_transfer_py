@@ -191,14 +191,14 @@ class GenerateMaterialFrame(object):
         """ retrieve material properties from the new material addition
          frame to save to the json database """
         self.get_mat_property_from_form()
-        self.material.save_material()
+        self.save_material()
         # self.field_material_name.set(self.material.material_name)
         self.master.destroy()
 
     def edit_material_in_db(self):
         """ edit existing material property values """
         self.get_mat_property_from_form()
-        self.material.edit_existing_in_json()
+        self.edit_existing_in_json()
         self.master.destroy()
 
     def get_mat_property_from_form(self):

@@ -1,7 +1,6 @@
 # coding=utf-8
 
 import json
-from tkinter import messagebox
 import re
 
 
@@ -40,24 +39,6 @@ class MaterialProperties:
         self.melting_point = _data[material_name]["MeltingTemperature"]
         self.emissivity = _data[material_name]["Emissivity"]
         self.reflectivity = _data[material_name]["Reflectivity"]
-
-    def save_material(self):
-        # material name error handling
-        if self.material_name is None:
-            messagebox.showerror('Error', 'Please enter material name')
-        else:
-            if self.material_name in self.material_list:
-                _new_name = self.material_name_test()
-                _error_message = ('Material "%s" already exists in database.\n'
-                                  'Would you like to save as "%s"?'
-                                  % (self.material_name, _new_name))
-                if messagebox.askyesno('Error', _error_message, icon='warning'):
-                    self.material_name = _new_name
-                    self.format_material_as_json()
-                    self.write_to_json()
-            else:
-                self.format_material_as_json()
-                self.write_to_json()
 
     def write_to_json(self):
         with open(self.material_file, 'r') as _output_file:
