@@ -16,7 +16,7 @@ class MainAppQt(QMainWindow):
         GenerateMenu(self)
 
         self.x = QWidget(self)
-        self.x.setGeometry(100, 100, 800, 600)
+        self.x.setGeometry(100, 100, 600, 200)
 
         MaterialFrame(self.x)
 
@@ -32,6 +32,7 @@ class MainAppQt(QMainWindow):
     @pyqtSlot(bool)
     def close_all(self):
         print('yay something worked')
+        print(self.geometry())
         sys.exit()
 
 

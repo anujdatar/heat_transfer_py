@@ -10,7 +10,7 @@ class MaterialProperties:
 
     def __init__(self, name=None):
         self.material_name = name
-        self.material_file = "./data/json_files/materials.json"
+        self.material_file = "./data/settings_files/materials.json"
         self.material_list = []
         self.material_json = {}
         self.density = 0.
@@ -51,7 +51,6 @@ class MaterialProperties:
                 _error_message = ('Material "%s" already exists in database.\n'
                                   'Would you like to save as "%s"?'
                                   % (self.material_name, _new_name))
-            # messagebox.showerror('Error', _error_message)
                 if messagebox.askyesno('Error', _error_message, icon='warning'):
                     self.material_name = _new_name
                     self.format_material_as_json()
@@ -66,13 +65,6 @@ class MaterialProperties:
         _existing_data.update(self.material_json)
         with open(self.material_file, 'w') as _output_file1:
             json.dump(_existing_data, _output_file1, indent=4)
-
-    def edit_existing_in_json(self):
-        _box_title = 'Edit Material?'
-        _box_message = 'Are you sure you want to permanently edit "%s"?' % self.material_name
-        if messagebox.askyesno(_box_title, _box_message, icon='warning'):
-            self.format_material_as_json()
-            self.write_to_json()
 
     def format_material_as_json(self):
         # format properties for JSON dump

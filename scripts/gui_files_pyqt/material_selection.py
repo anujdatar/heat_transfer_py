@@ -1,6 +1,7 @@
 # coding=utf-8
 
-from PyQt5.QtWidgets import QWidget, QGroupBox, QGridLayout, QLineEdit, QLabel
+from PyQt5.QtWidgets import (QGroupBox, QGridLayout, QLineEdit, QLabel,
+                             QHBoxLayout, QComboBox)
 
 
 class MaterialFrame:
@@ -9,9 +10,13 @@ class MaterialFrame:
         super().__init__()
         self.parent = parent
 
-        self.boxGroup = QGroupBox('Material Selection', self.parent)
-
+        self.boxGroup = QGroupBox('Material Settings', self.parent)
         self.gridLayout = QGridLayout(self.boxGroup)
+
+        self.materialboxGroup = QGroupBox('Material Selection', self.boxGroup)
+        self.miniLayout = QHBoxLayout(self.materialboxGroup)
+        self.label_mat_name = QLabel('Select Material', self.materialboxGroup)
+        # self.
 
         self.label_Density = QLabel('Density (kg/m^3)', self.boxGroup)
         self.entry_Density = QLineEdit(self.boxGroup)
@@ -19,7 +24,8 @@ class MaterialFrame:
         self.label_spHeat = QLabel('Specific Heat (J/Kg.K)', self.boxGroup)
         self.entry_spHeat = QLineEdit(self.boxGroup)
 
-        self.label_Conductivity = QLabel('Thermal Conductivity (W/m.K)', self.boxGroup)
+        self.label_Conductivity = QLabel('Thermal Conductivity (W/m.K)',
+                                         self.boxGroup)
         self.entry_Conductivity = QLineEdit(self.boxGroup)
 
         self.label_meltPt = QLabel('Melting Temperature (K)', self.boxGroup)
@@ -34,23 +40,25 @@ class MaterialFrame:
         self.label_blank = QLabel(' ', self.boxGroup)
         self.label_blank.setFixedWidth(20)
 
-        self.gridLayout.addWidget(self.label_Density, 0, 0)
-        self.gridLayout.addWidget(self.entry_Density, 0, 1)
-        self.gridLayout.addWidget(self.label_blank, 0, 2)
-        self.gridLayout.addWidget(self.label_spHeat, 0, 3)
-        self.gridLayout.addWidget(self.entry_spHeat, 0, 4)
+        self.gridLayout.addWidget(self.materialboxGroup, 0, 0)
 
-        self.gridLayout.addWidget(self.label_Conductivity, 1, 0)
-        self.gridLayout.addWidget(self.entry_Conductivity, 1, 1)
+        self.gridLayout.addWidget(self.label_Density, 1, 0)
+        self.gridLayout.addWidget(self.entry_Density, 1, 1)
+        self.gridLayout.addWidget(self.label_blank, 1, 2)
+        self.gridLayout.addWidget(self.label_spHeat, 1, 3)
+        self.gridLayout.addWidget(self.entry_spHeat, 1, 4)
 
-        self.gridLayout.addWidget(self.label_meltPt, 1, 3)
-        self.gridLayout.addWidget(self.entry_meltPt, 1, 4)
+        self.gridLayout.addWidget(self.label_Conductivity, 2, 0)
+        self.gridLayout.addWidget(self.entry_Conductivity, 2, 1)
 
-        self.gridLayout.addWidget(self.label_Emissivity, 2, 0)
-        self.gridLayout.addWidget(self.entry_Emissivity, 2, 1)
+        self.gridLayout.addWidget(self.label_meltPt, 2, 3)
+        self.gridLayout.addWidget(self.entry_meltPt, 2, 4)
 
-        self.gridLayout.addWidget(self.label_Reflect, 2, 3)
-        self.gridLayout.addWidget(self.entry_Reflect, 2, 4)
+        self.gridLayout.addWidget(self.label_Emissivity, 3, 0)
+        self.gridLayout.addWidget(self.entry_Emissivity, 3, 1)
+
+        self.gridLayout.addWidget(self.label_Reflect, 3, 3)
+        self.gridLayout.addWidget(self.entry_Reflect, 3, 4)
 
         self.boxGroup.setLayout(self.gridLayout)
 

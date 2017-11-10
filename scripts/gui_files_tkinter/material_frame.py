@@ -4,7 +4,8 @@
 
 import tkinter as tk
 from tkinter import ttk
-from .material_class_file import MaterialProperties
+from tkinter import messagebox
+from scripts.import_settings import MaterialProperties
 
 
 class GenerateMaterialFrame(object):
@@ -59,7 +60,8 @@ class GenerateMaterialFrame(object):
         # material property widgets
         self.frame_material_name = ttk.LabelFrame(self.master)
         self.frame_material_name.grid(row=0, column=0, columnspan=3,
-                                      padx=5, pady=5, ipadx=2, ipady=2, sticky='w')
+                                      padx=5, pady=5, ipadx=2, ipady=2,
+                                      sticky='w')
 
         # ################ Density
         self.label_density = ttk.Label(self.master, text='Density')
@@ -83,8 +85,10 @@ class GenerateMaterialFrame(object):
         self.label_sp_heat_units.grid(row=1, column=5, pady=2, sticky='w')
 
         # ################ Thermal Conductivity
-        self.label_conductivity = ttk.Label(self.master, text='Thermal Conductivity')
-        self.label_conductivity.grid(row=2, column=0, padx=10, pady=2, sticky='e')
+        self.label_conductivity = ttk.Label(self.master,
+                                            text='Thermal Conductivity')
+        self.label_conductivity.grid(row=2, column=0, padx=10, pady=2,
+                                     sticky='e')
         self.entry_conductivity = ttk.Entry(self.master,
                                             textvariable=self.material_conductivity,
                                             justify='center')
@@ -116,7 +120,8 @@ class GenerateMaterialFrame(object):
         # ################## reflectivity
         self.label_reflectivity = ttk.Label(self.master, text='Reflectivity',
                                             width=20, anchor='e')
-        self.label_reflectivity.grid(row=3, column=3, padx=15, pady=2, sticky='e')
+        self.label_reflectivity.grid(row=3, column=3, padx=15, pady=2,
+                                     sticky='e')
         self.entry_reflectivity = ttk.Entry(self.master,
                                             textvariable=self.material_reflectivity,
                                             justify='center')
@@ -127,7 +132,8 @@ class GenerateMaterialFrame(object):
         # ######### material selection / entry fields
         self.label_material_name = ttk.Label(self.frame_material_name,
                                              text='Select Material')
-        self.label_material_name.grid(row=0, column=0, padx=10, pady=5, sticky='e')
+        self.label_material_name.grid(row=0, column=0, padx=10, pady=5,
+                                      sticky='e')
 
         self.combo_material_name = ttk.Combobox(self.frame_material_name,
                                                 postcommand=self.return_material_list,
@@ -147,17 +153,20 @@ class GenerateMaterialFrame(object):
         self.button_add_material = ttk.Button(self.master,
                                               text='Add Material',
                                               command=self.add_material_to_db)
-        self.button_add_material.grid(row=4, column=3, padx=5, pady=25, sticky='s')
+        self.button_add_material.grid(row=4, column=3, padx=5, pady=25,
+                                      sticky='s')
 
         self.button_edit_material = ttk.Button(self.master,
                                                text='Edit Material',
                                                command=self.edit_material_in_db)
-        self.button_edit_material.grid(row=4, column=4, padx=5, pady=25, sticky='s')
+        self.button_edit_material.grid(row=4, column=4, padx=5, pady=25,
+                                       sticky='s')
 
         self.button_close_window = ttk.Button(self.master,
                                               text='Close',
                                               command=self.master.destroy)
-        self.button_close_window.grid(row=4, column=5, padx=5, pady=25, sticky='s')
+        self.button_close_window.grid(row=4, column=5, padx=5, pady=25,
+                                      sticky='s')
 
     def return_material_list(self):
         """ retrieve list of materials from json file for the combobox """
@@ -200,3 +209,29 @@ class GenerateMaterialFrame(object):
         self.material.melting_point = self.material_melt_point.get()
         self.material.emissivity = self.material_emissivity.get()
         self.material.reflectivity = self.material_reflectivity.get()
+
+    def save_material(self):
+        # material name error handling
+        if self.material_name is None:
+            messagebox.showerror('Error', 'Please enter material name')
+        else:
+            if self.material_name in self.material.material_list:
+                _new_name = self.material.material_name_test()
+                _error_message = ('Material "%s" already exists in database.\n'
+                                  'Would you like to save as "%s"?'
+                                  % (self.material_name, _new_name))
+                if messagebox.askyesno('Error', _error_message, icon='warning'):
+                    self.material_name = _new_name
+                    self.material.format_material_as_json()
+                    self.material.write_to_json()
+            else:
+                self.material.format_material_as_json()
+                self.material.write_to_json()
+
+    def edit_existing_in_json(self):
+        _box_title = 'Edit Material?'
+        _box_message = ('Are you sure you want to permanently edit "%s"?'
+                        % self.material_name)
+        if messagebox.askyesno(_box_title, _box_message, icon='warning'):
+            self.material.format_material_as_json()
+            self.material.write_to_json()
