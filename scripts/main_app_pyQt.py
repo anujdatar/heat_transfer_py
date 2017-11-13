@@ -6,6 +6,7 @@ from PyQt5.QtCore import pyqtSlot
 from scripts.gui_files_pyqt import GenerateMenu
 from scripts.gui_files_pyqt import MaterialFrame
 
+
 class MainAppQt(QMainWindow):
 
     def __init__(self, width=1280, height=720):
@@ -18,7 +19,7 @@ class MainAppQt(QMainWindow):
         self.x = QWidget(self)
         self.x.setGeometry(100, 100, 600, 200)
 
-        MaterialFrame(self.x)
+        self.mat_frame = MaterialFrame(self.x)
 
         # %%%%%%%%%% quit button
         button_quit = QPushButton('Quit', self)
@@ -33,6 +34,7 @@ class MainAppQt(QMainWindow):
     def close_all(self):
         print('yay something worked')
         print(self.geometry())
+        print(self.combo.currentText())
         sys.exit()
 
 

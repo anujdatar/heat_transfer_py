@@ -42,11 +42,10 @@ class GenerateProcessFrame(object):
     def generate_process_frame(self):
         # ############# Laser Power
         self.label_laser_power = ttk.Label(self.master, text='Laser Power')
-        self.label_laser_power.grid(row=0, column=0, padx=10, pady=2,
-                                    sticky='e')
-        self.entry_laser_power = ttk.Entry(self.master,
-                                           textvariable=self.laser_power,
-                                           justify='center')
+        self.label_laser_power.grid(
+            row=0, column=0, padx=10, pady=2, sticky='e')
+        self.entry_laser_power = ttk.Entry(
+            self.master, textvariable=self.laser_power, justify='center')
         self.entry_laser_power.grid(row=0, column=1, pady=2)
         self.label_power_units = ttk.Label(self.master, text='Watts')
         self.label_power_units.grid(row=0, column=2, pady=2, sticky='w')
@@ -54,44 +53,40 @@ class GenerateProcessFrame(object):
         # ############### Laser Spot Size
         self.label_spot_size = ttk.Label(self.master, text='Laser Spot Size')
         self.label_spot_size.grid(row=1, column=0, padx=10, pady=2, sticky='e')
-        self.entry_spot_size = ttk.Entry(self.master,
-                                         textvariable=self.laser_spot_size,
-                                         justify='center')
+        self.entry_spot_size = ttk.Entry(
+            self.master, textvariable=self.laser_spot_size, justify='center')
         self.entry_spot_size.grid(row=1, column=1, pady=2)
         self.label_spot_units = ttk.Label(self.master, text='m^2')
         self.label_spot_units.grid(row=1, column=2, pady=2, sticky='w')
 
         # ############## Laser Scanning Velocity
-        self.label_laser_vel = ttk.Label(self.master,
-                                         text='Laser Scanning Velocity')
+        self.label_laser_vel = ttk.Label(
+            self.master, text='Laser Scanning Velocity')
         self.label_laser_vel.grid(row=2, column=0, padx=10, pady=2, sticky='e')
-        self.entry_laser_vel = ttk.Entry(self.master,
-                                         textvariable=self.laser_velocity,
-                                         justify='center')
+        self.entry_laser_vel = ttk.Entry(
+            self.master, textvariable=self.laser_velocity, justify='center')
         self.entry_laser_vel.grid(row=2, column=1, pady=2)
         self.label_velocity_units = ttk.Label(self.master, text='m/s')
         self.label_velocity_units.grid(row=2, column=2, pady=2, sticky='w')
 
         # ############## Ambient Temperature
-        self.label_ambient_temp = ttk.Label(self.master,
-                                            text='Ambient Temperature')
-        self.label_ambient_temp.grid(row=3, column=0, padx=10, pady=2,
-                                     sticky='e')
-        self.entry_ambient_temp = ttk.Entry(self.master,
-                                            textvariable=self.temperature_inf,
-                                            justify='center')
+        self.label_ambient_temp = ttk.Label(
+            self.master, text='Ambient Temperature')
+        self.label_ambient_temp.grid(
+            row=3, column=0, padx=10, pady=2, sticky='e')
+        self.entry_ambient_temp = ttk.Entry(
+            self.master, textvariable=self.temperature_inf, justify='center')
         self.entry_ambient_temp.grid(row=3, column=1, pady=2)
         self.label_temperature_units = ttk.Label(self.master, text='K')
         self.label_temperature_units.grid(row=3, column=2, pady=2, sticky='w')
 
         # ########### Convective Heat Transfer Coefficient
-        self.label_convect_coeff = ttk.Label(self.master,
-                                             text='Convective HT Coeff')
-        self.label_convect_coeff.grid(row=4, column=0, padx=10, pady=2,
-                                      sticky='e')
-        self.entry_convect_coeff = ttk.Entry(self.master,
-                                             textvariable=self.convection_coeff,
-                                             justify='center')
+        self.label_convect_coeff = ttk.Label(
+            self.master, text='Convective HT Coeff')
+        self.label_convect_coeff.grid(
+            row=4, column=0, padx=10, pady=2, sticky='e')
+        self.entry_convect_coeff = ttk.Entry(
+            self.master, textvariable=self.convection_coeff, justify='center')
         self.entry_convect_coeff.grid(row=4, column=1, pady=2)
         self.label_convect_units = ttk.Label(self.master, text='W/(m^2.K)')
         self.label_convect_units.grid(row=4, column=2, pady=2, sticky='w')
