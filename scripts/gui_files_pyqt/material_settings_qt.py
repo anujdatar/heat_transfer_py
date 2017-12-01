@@ -3,7 +3,6 @@
 from PyQt5.QtWidgets import (QGroupBox, QGridLayout, QLineEdit, QLabel,
                              QHBoxLayout, QComboBox)
 from PyQt5.QtCore import Qt
-
 from scripts.import_settings import MaterialProperties
 
 
@@ -22,7 +21,7 @@ class MaterialFrame:
         self.materialBoxGroup = QGroupBox('', self.boxGroup)
         self.miniLayout = QHBoxLayout(self.materialBoxGroup)
         self.label_mat_name = QLabel(self.materialBoxGroup)
-        self.label_mat_name.setAlignment(Qt.AlignCenter)
+        self.label_mat_name.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.material_name_wid = QComboBox()
 
         self.miniLayout.addWidget(self.label_mat_name)
@@ -30,26 +29,32 @@ class MaterialFrame:
         self.materialBoxGroup.setLayout(self.miniLayout)
 
         self.label_Density = QLabel('Density (kg/m^3)', self.boxGroup)
+        self.label_Density.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_Density = QLineEdit(self.boxGroup)
 
         self.label_spHeat = QLabel('Specific Heat (J/Kg.K)', self.boxGroup)
+        self.label_spHeat.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_spHeat = QLineEdit(self.boxGroup)
 
         self.label_Conductivity = QLabel('Thermal Conductivity (W/m.K)',
                                          self.boxGroup)
+        self.label_Conductivity.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_Conductivity = QLineEdit(self.boxGroup)
 
         self.label_meltPt = QLabel('Melting Temperature (K)', self.boxGroup)
+        self.label_meltPt.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_meltPt = QLineEdit(self.boxGroup)
 
         self.label_Emissivity = QLabel('Emissivity (0-1)', self.boxGroup)
+        self.label_Emissivity.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_Emissivity = QLineEdit(self.boxGroup)
 
         self.label_Reflect = QLabel('Reflectivity (0-1)', self.boxGroup)
+        self.label_Reflect.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_Reflect = QLineEdit(self.boxGroup)
 
         self.label_blank = QLabel(' ', self.boxGroup)
-        self.label_blank.setFixedWidth(20)
+        self.label_blank.setFixedWidth(40)
 
         self.gridLayout.addWidget(self.materialBoxGroup, 0, 0, 1, 3)
 
@@ -70,11 +75,11 @@ class MaterialFrame:
         self.gridLayout.addWidget(self.entry_Reflect, 3, 4)
 
         self.boxGroup.setLayout(self.gridLayout)
-        # if self.box_type == 'entry':
-        #     self.new_material_entry()
-        # else:
-        self.material_select_box()
-        self.material_name_wid.activated[str].connect(self.on_material_select)
+        if self.box_type == 'entry':
+            self.new_material_entry()
+        else:
+            self.material_select_box()
+            self.material_name_wid.activated[str].connect(self.on_material_select)
 
     def material_select_box(self):
         self.label_mat_name.setText('Select Material')
@@ -94,6 +99,12 @@ class MaterialFrame:
 
     def on_material_select(self, text):
         self.material_name = text
-        print(text)
         self.material.read_from_json(self.material_name)
-        print(self.material.density)
+        self.entry_Density.setText(str(self.material.density))
+        self.entry_spHeat.setText(str(self.material.specific_heat))
+        self.entry_Conductivity.setText(str(self.material.conductivity))
+        self.entry_meltPt.setText(str(self.material.melting_point))
+        self.entry_Emissivity.setText(str(self.material.emissivity))
+        self.entry_Reflect.setText(str(self.material.reflectivity))
+
+        print(self.material_name, self.entry_Density.text())
