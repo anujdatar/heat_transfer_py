@@ -26,6 +26,8 @@ class MainAppQt(QMainWindow):
         self.processWidget.setGeometry(start_x, start_y+200, 400, 200)
         self.proc_frame = ProcessFrame(self.processWidget)
 
+
+
         # %%%%%%%%%% print button
         button_print = QPushButton('Print', self)
         button_print.setToolTip('Print some stuff to console')

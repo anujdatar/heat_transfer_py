@@ -16,12 +16,12 @@ class ProcessSettings:
 
         self.process_json = {}
 
-        self.get_process_settings()
+        self.read_from_json()
 
         self.box_title = []
         self.box_message = []
 
-    def get_process_settings(self):
+    def read_from_json(self):
         with open(self.settings_file, 'r') as _jsfile:
             _data = json.load(_jsfile)
         self.laser_power = _data["LaserPower"]

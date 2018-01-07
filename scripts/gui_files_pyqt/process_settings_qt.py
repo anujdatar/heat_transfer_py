@@ -53,3 +53,12 @@ class ProcessFrame:
         self.gridLayout.addWidget(self.entry_HT_coeff, 4, 1)
 
         self.boxGroup.setLayout(self.gridLayout)
+
+        self.update_process_settings()
+
+    def update_process_settings(self):
+        self.entry_laser_power.setText(str(self.process.laser_power))
+        self.entry_laser_spot.setText(str(self.process.laser_spot_size))
+        self.entry_scan_vel.setText(str(self.process.laser_velocity))
+        self.entry_ambient.setText(str(self.process.temperature_inf))
+        self.entry_HT_coeff.setText(str(self.process.convection_coeff))

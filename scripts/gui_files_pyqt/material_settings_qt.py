@@ -22,7 +22,7 @@ class MaterialFrame:
         self.miniLayout = QHBoxLayout(self.materialBoxGroup)
         self.label_mat_name = QLabel(self.materialBoxGroup)
         self.label_mat_name.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        self.material_name_wid = QComboBox()
+        self.material_name_widget = QComboBox()
 
         self.miniLayout.addWidget(self.label_mat_name)
         # self.miniLayout.addWidget(self.material_name_wid)
@@ -79,23 +79,23 @@ class MaterialFrame:
             self.new_material_entry()
         else:
             self.material_select_box()
-            self.material_name_wid.activated[str].connect(self.on_material_select)
+            self.material_name_widget.activated[str].connect(self.on_material_select)
 
     def material_select_box(self):
         self.label_mat_name.setText('Select Material')
-        self.material_name_wid = QComboBox(self.materialBoxGroup)
-        self.miniLayout.addWidget(self.material_name_wid)
+        self.material_name_widget = QComboBox(self.materialBoxGroup)
+        self.miniLayout.addWidget(self.material_name_widget)
         self.update_material_combobox()
 
     def new_material_entry(self):
         self.label_mat_name.setText('Enter Material Name')
-        self.material_name_wid = QLineEdit(self.materialBoxGroup)
-        self.miniLayout.addWidget(self.material_name_wid)
+        self.material_name_widget = QLineEdit(self.materialBoxGroup)
+        self.miniLayout.addWidget(self.material_name_widget)
 
     def update_material_combobox(self):
-        self.material_name_wid.clear()
+        self.material_name_widget.clear()
         self.material.get_material_list()
-        self.material_name_wid.addItems(self.material.material_list)
+        self.material_name_widget.addItems(self.material.material_list)
 
     def on_material_select(self, text):
         self.material_name = text

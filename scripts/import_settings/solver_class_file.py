@@ -23,7 +23,7 @@ class SolverSettings:
             self.solver_list.append(_key)
             self.solver_list.sort()
 
-    def get_solver_settings(self, solver_name):
+    def read_from_json(self, solver_name):
         with open(self.solver_settings_file, 'r') as _jsfile:
             _data = json.load(_jsfile)
         self.convergence_criterion = _data[solver_name]['convergence_criterion']
