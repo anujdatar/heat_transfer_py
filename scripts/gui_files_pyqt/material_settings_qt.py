@@ -54,7 +54,7 @@ class MaterialFrame:
         self.entry_Reflect = QLineEdit(self.boxGroup)
 
         self.label_blank = QLabel(' ', self.boxGroup)
-        self.label_blank.setFixedWidth(40)
+        self.label_blank.setFixedWidth(60)
 
         self.gridLayout.addWidget(self.materialBoxGroup, 0, 0, 1, 3)
 

@@ -6,6 +6,7 @@ from PyQt5.QtCore import pyqtSlot
 from scripts.gui_files_pyqt import GenerateMenu
 from scripts.gui_files_pyqt import MaterialFrame
 from scripts.gui_files_pyqt import ProcessFrame
+from scripts.gui_files_pyqt import SolverFrame
 
 
 class MainAppQt(QMainWindow):
@@ -19,14 +20,16 @@ class MainAppQt(QMainWindow):
         start_x = 10
         start_y = 35
         self.materialWidget = QWidget(self)
-        self.materialWidget.setGeometry(start_x, start_y, 600, 200)
+        self.materialWidget.setGeometry(start_x, start_y, 650, 200)
         self.mat_frame = MaterialFrame(self.materialWidget)
 
         self.processWidget = QWidget(self)
         self.processWidget.setGeometry(start_x, start_y+200, 400, 200)
         self.proc_frame = ProcessFrame(self.processWidget)
 
-
+        self.solverWidget = QWidget(self)
+        self.solverWidget.setGeometry(start_x, start_y+400, 400, 200)
+        self.solv_frame = SolverFrame(self.solverWidget)
 
         # %%%%%%%%%% print button
         button_print = QPushButton('Print', self)
