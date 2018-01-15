@@ -3,6 +3,7 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget
 from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QIcon
 from scripts.gui_files_pyqt import GenerateMenu
 from scripts.gui_files_pyqt import MaterialFrame
 from scripts.gui_files_pyqt import ProcessFrame
@@ -14,22 +15,28 @@ class MainAppQt(QMainWindow):
     def __init__(self, width=1280, height=720):
         super().__init__()
         self.setWindowTitle('Heat Transfer for Selective Laser Sintering')
+        self.logo = QIcon("./images/logo.png")
+        self.setWindowIcon(self.logo)
         self.setGeometry(50, 50, width, height)
         self.statusBar().showMessage('Welcome')
         GenerateMenu(self)
         start_x = 10
         start_y = 35
         self.materialWidget = QWidget(self)
-        self.materialWidget.setGeometry(start_x, start_y, 650, 200)
+        self.materialWidget.setGeometry(start_x, start_y, 650, 175)
         self.mat_frame = MaterialFrame(self.materialWidget)
 
         self.processWidget = QWidget(self)
-        self.processWidget.setGeometry(start_x, start_y+200, 400, 200)
+        self.processWidget.setGeometry(start_x, start_y+175, 350, 175)
         self.proc_frame = ProcessFrame(self.processWidget)
 
         self.solverWidget = QWidget(self)
-        self.solverWidget.setGeometry(start_x, start_y+400, 400, 200)
+        self.solverWidget.setGeometry(start_x+360, start_y+175, 300, 175)
         self.solv_frame = SolverFrame(self.solverWidget)
+
+        # print(self.mat_frame.boxGroup.geometry())
+        # print(self.proc_frame.boxGroup.geometry())
+        # print(self.solv_frame.boxGroup.geometry())
 
         # %%%%%%%%%% print button
         button_print = QPushButton('Print', self)
@@ -49,8 +56,6 @@ class MainAppQt(QMainWindow):
 
     @pyqtSlot(bool)
     def print_shit(self):
-        print(self.geometry())
-        print(self.mat_frame.entry_Density.text())
         print('yay something worked')
 
     @pyqtSlot(bool)

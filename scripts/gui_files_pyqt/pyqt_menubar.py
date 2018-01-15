@@ -12,13 +12,18 @@ class GenerateMenu:
 
         self.menu_top = self.parent.menuBar()
         self.file_menu = self.menu_top.addMenu('File')
-        self.edit_menu = self.menu_top.addMenu('Edit')
+        self.material_menu = self.menu_top.addMenu('Materials')
         self.help_menu = self.menu_top.addMenu('Help')
 
         # %%%%%%% add/edit material button
-        self.option_new_material = QAction('Add/Edit Material', self.parent)
-        self.option_new_material.setStatusTip('Add or edit a material in database')
-        self.edit_menu.addAction(self.option_new_material)
+        self.option_new_material = QAction('Add Material', self.parent)
+        self.option_new_material.setStatusTip('Add new material to database')
+        self.material_menu.addAction(self.option_new_material)
+
+        self.option_edit_material = QAction('Edit Material', self.parent)
+        self.option_edit_material.setStatusTip('Edit existing material '
+                                               'in database')
+        self.material_menu.addAction(self.option_edit_material)
 
         # %%%%%%%%%%%%%% exit button
         # __ico_file = '/opt/google/chrome/product_logo_64.png'
