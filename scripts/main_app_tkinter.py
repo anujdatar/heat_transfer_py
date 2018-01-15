@@ -4,6 +4,7 @@
 
 import tkinter as tk
 from tkinter import ttk
+from sys import platform
 
 from .gui_files_tkinter import GenerateMaterialFrame
 from .gui_files_tkinter import GenerateProcessFrame
@@ -16,9 +17,14 @@ class MainAppTk(object):
     def __init__(self, master=None):
         self.master = master
 
-        master.minsize(width=680, height=480)
-        master.resizable(True, True)
-        master.title("Heat Transfer Simulation")
+        self.master.minsize(width=680, height=480)
+        self.master.resizable(True, True)
+        self.master.title("Heat Transfer Simulation")
+        if platform == 'win32':
+            self.master.iconbitmap('./images/logo.ico')
+        else:
+            icon = tk.Image("photo", file=r'./images/logo.png')
+            self.master.call('wm', 'iconphoto', self.master._w, icon)
 
         self.new_material_window_open = False
         self.about_info_window_open = False

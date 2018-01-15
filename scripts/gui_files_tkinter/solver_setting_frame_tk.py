@@ -83,7 +83,7 @@ class GenerateSolverFrame(object):
     def new_solver_selected(self, event=None):
         if event:
             self.solver_name = self.combo_solver_select.get()
-            self.solver.get_solver_settings(self.solver_name)
+            self.solver.read_from_json(self.solver_name)
             self.convergence_criterion.set(self.solver.convergence_criterion)
             self.maximum_iterations.set(self.solver.maximum_iterations)
             self.relaxation_parameter.set(self.solver.relaxation_parameter)
