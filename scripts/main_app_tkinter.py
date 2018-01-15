@@ -4,6 +4,7 @@
 
 import tkinter as tk
 from tkinter import ttk
+import sys
 from sys import platform
 
 from .gui_files_tkinter import GenerateMaterialFrame
