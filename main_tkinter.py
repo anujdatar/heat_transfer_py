@@ -15,8 +15,8 @@ if __name__ == '__main__':
         root.iconbitmap('./images/logo.ico')
     elif platform == 'linux' or platform == 'linux2':
         icon = tk.Image("photo", file=r'./images/logo.png')
-        # root.wm_iconphoto(icon)
-        # root.call('wm', 'iconphoto', root.w, icon)
+        root.wm_iconphoto('-default', icon)
+#        root.call('wm', 'iconphoto', root._w, icon)
 
     MainAppTk(root)
     root.mainloop()
