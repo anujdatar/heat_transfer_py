@@ -4,12 +4,10 @@
 
 import tkinter as tk
 from tkinter import ttk
-# import sys
-from sys import platform
 
-from .gui_files_tkinter import GenerateMaterialFrame
-from .gui_files_tkinter import GenerateProcessFrame
-from .gui_files_tkinter import GenerateSolverFrame
+from .gui_scripts import GenerateMaterialFrame
+from .gui_scripts import GenerateProcessFrame
+from .gui_scripts import GenerateSolverFrame
 
 # from material_class_file import MaterialProperties
 
@@ -21,12 +19,9 @@ class MainAppTk(object):
         self.master.minsize(width=680, height=480)
         self.master.resizable(True, True)
         self.master.title("Heat Transfer Simulation")
-#        if platform == 'win32':
-#            self.master.iconbitmap('./images/logo.ico')
-#        elif platform == 'linux' or platform == 'linux2':
-#            self.icon = tk.Image("photo", file=r'./images/logo.png')
-#            print(type(self.icon))
-#            self.master.call('wm', 'iconphoto', self.master._w, self.icon)
+
+        self.icon = tk.Image("photo", file=r'./images/logo.png')
+        self.master.wm_iconphoto('-default', self.icon)
 
         self.new_material_window_open = False
         self.about_info_window_open = False
