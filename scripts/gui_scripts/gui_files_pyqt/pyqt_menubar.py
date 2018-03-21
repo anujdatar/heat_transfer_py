@@ -1,12 +1,13 @@
 # coding=utf-8
 
-import sys
+# import sys
 from PyQt5.QtWidgets import QAction
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QCoreApplication
+from scripts.gui_scripts.gui_files_pyqt.material_db_gui import MaterialDbWindow
 
 
-class GenerateMenu:
+class MainMenu:
     def __init__(self, parent):
         self.parent = parent
 
@@ -15,7 +16,11 @@ class GenerateMenu:
         self.material_menu = self.menu_top.addMenu('Materials')
         self.help_menu = self.menu_top.addMenu('Help')
 
-        # %%%%%%% add/edit material button
+        # %%%%%%% material database options buttons
+        self.open_materialDB = QAction('Open Material Database', self.parent)
+        self.material_menu.addAction(self.open_materialDB)
+        self.open_materialDB.triggered.connect(self.material_db_window)
+
         self.option_new_material = QAction('Add Material', self.parent)
         self.option_new_material.setStatusTip('Add new material to database')
         self.material_menu.addAction(self.option_new_material)
@@ -36,3 +41,6 @@ class GenerateMenu:
         # %%%%%%%%%%%% about button
         option_about = QAction('About', self.parent)
         self.help_menu.addAction(option_about)
+
+    def material_db_window(self):
+        self.DB_child = MaterialDbWindow(self.parent)

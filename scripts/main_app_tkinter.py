@@ -5,9 +5,9 @@
 import tkinter as tk
 from tkinter import ttk
 
-from .gui_scripts import GenerateMaterialFrame
-from .gui_scripts import GenerateProcessFrame
-from .gui_scripts import GenerateSolverFrame
+from scripts.gui_scripts import GenerateMaterialFrame
+from scripts.gui_scripts import GenerateProcessFrame
+from scripts.gui_scripts import GenerateSolverFrame
 
 # from material_class_file import MaterialProperties
 

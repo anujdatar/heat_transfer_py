@@ -4,7 +4,7 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QIcon
-from scripts.gui_scripts import GenerateMenu
+from scripts.gui_scripts import MainMenu
 from scripts.gui_scripts import MaterialFrame
 from scripts.gui_scripts import ProcessFrame
 from scripts.gui_scripts import SolverFrame
@@ -15,11 +15,11 @@ class MainAppQt(QMainWindow):
     def __init__(self, width=1280, height=720):
         super().__init__()
         self.setWindowTitle('Heat Transfer for Selective Laser Sintering')
-        self.logo = QIcon("./images/logo_1.png")
+        self.logo = QIcon("./images/logo.png")
         self.setWindowIcon(self.logo)
         self.setGeometry(50, 50, width, height)
         self.statusBar().showMessage('Welcome')
-        GenerateMenu(self)
+        self.menu = MainMenu(self)
         start_x = 10
         start_y = 35
         self.materialWidget = QWidget(self)
