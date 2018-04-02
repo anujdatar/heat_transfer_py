@@ -25,6 +25,7 @@ Just a basic python application to calculate heat transfer in selective laser si
 * __Dependencies__:
     - You will need **ffmpeg** for running the animation generation scrypts
     - Tkinter (Tk) for GUI
+    - PySide2 for a QT5 based GUI
 
 
 ### Contribution guidelines ###
