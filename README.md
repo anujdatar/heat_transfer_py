@@ -9,9 +9,11 @@ Just a basic python application to calculate heat transfer in selective laser si
 
 * __Summary__: Still in Alpha
     - Tool to simulate heat transfer in a laser based process - currently for a 2D substrate irridiated by a moving point heat source.
-* __Version__ 0.1.2: added GUI 
-    - __Version__ 0.1: was coded in matlab
+* __Version__ 0.1.3: Qt GUI added (started with PyQt5, moved to PySide2) 
+    - __Version__ 0.1: coded in matlab
     - __Version__ 0.1.1: moved to python
+    - __Version__ 0.1.2: Tkinter GUI added
+    - __Version__ 0.1.3: Qt GUI added (started with PyQt5, moved to PySide2)
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 
