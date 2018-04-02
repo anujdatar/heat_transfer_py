@@ -24,8 +24,8 @@ Just a basic python application to calculate heat transfer in selective laser si
     - for the command line version - Material properties can be viewed in the **Materials** folder. You can add more materials here, but you will have to update the **__init__.py** file to be able to import the properties. Use standard python package guidelines
 * __Dependencies__:
     - You will need **ffmpeg** for running the animation generation scrypts
-    - Tkinter (Tk) for GUI
-    - PySide2 for a QT5 based GUI
+    - **Tkinter** (Tk) for GUI
+    - **PySide2** (QT5) based GUI
 
 
 ### Contribution guidelines ###
