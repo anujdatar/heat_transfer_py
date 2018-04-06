@@ -7,7 +7,7 @@ class ProcessSettings:
     """ define and retrieve process settings """
 
     def __init__(self):
-        self.settings_file = "./data/settings_files/process_settings.json"
+        self.settings_file = "./data/process_settings.json"
         self.laser_power = 0.
         self.laser_spot_size = 0.
         self.laser_velocity = 0.

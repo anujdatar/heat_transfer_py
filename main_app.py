@@ -7,7 +7,7 @@ from scripts import MainAppQt
 from scripts import MainAppTk
 
 
-current_gui = "PySide"
+current_gui = "PySide2"
 
 try:
     from PySide2 import QtWidgets
@@ -19,7 +19,7 @@ except ImportError:
 
 if __name__ == '__main__':
 
-    if current_gui == 'PySide':
+    if current_gui == 'PySide2':
         app = QtWidgets.QApplication(sys.argv)
         ex = MainAppQt()
         sys.exit(app.exec_())

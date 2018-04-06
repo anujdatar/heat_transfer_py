@@ -4,10 +4,10 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QIcon
-from scripts.gui_scripts import MainMenu
-from scripts.gui_scripts import MaterialFrame
-from scripts.gui_scripts import ProcessFrame
-from scripts.gui_scripts import SolverFrame
+from scripts.gui_files_pyqt import MainMenu
+from scripts.gui_files_pyqt import MaterialFrame
+from scripts.gui_files_pyqt import ProcessFrame
+from scripts.gui_files_pyqt import SolverFrame
 
 
 class MainAppQt(QMainWindow):

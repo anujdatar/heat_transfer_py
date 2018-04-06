@@ -1,11 +1,12 @@
-''' import material and process properties from the settings files '''
+""" import material and process properties from the settings files """
 
 import json
 
-def import_material(material):
-    ''' import material properties from the settings files '''
 
-    jsfile = open('./settings/materials.json')
+def import_material(material):
+    """ import material properties from the settings files """
+
+    jsfile = open('./data/materials.json')
     data = json.load(jsfile)
     jsfile.close()
 
@@ -18,10 +19,11 @@ def import_material(material):
 
     return rho, Cp, k, T_melt, emissiv
 
-def import_process():
-    ''' import process settings'''
 
-    jsfile = open('./settings/process_settings.json')
+def import_process():
+    """ import process settings """
+
+    jsfile = open('./data/process_settings.json')
     data = json.load(jsfile)
     jsfile.close()
 
@@ -34,10 +36,11 @@ def import_process():
 
     return L_pow, L_spot, L_vel, T_inf, hc_air
 
-def import_solver_settings(solver):
-    ''' import solver settings '''
 
-    jsfile = open('./settings/solver_settings.json')
+def import_solver_settings(solver):
+    """ import solver settings """
+
+    jsfile = open('./data/solver_settings.json')
     data = json.load(jsfile)
     jsfile.close()
 

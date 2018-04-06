@@ -6,7 +6,7 @@ import json
 class SolverSettings:
 
     def __init__(self):
-        self.solver_settings_file = "./data/settings_files/solver_settings.json"
+        self.solver_settings_file = "./data/solver_settings.json"
         self.convergence_criterion = 0.
         self.maximum_iterations = 0.
         self.relaxation_parameter = 0.

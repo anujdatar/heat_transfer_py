@@ -10,7 +10,7 @@ class MaterialProperties:
 
     def __init__(self, name=None):
         self.material_name = name
-        self.material_file = "./data/settings_files/materials.json"
+        self.material_file = "./data/materials.json"
         self.material_list = []
         self.material_json = {}
         self.density = 0.

@@ -4,7 +4,7 @@
 from PyQt5.QtWidgets import QAction
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QCoreApplication
-from scripts.gui_scripts.gui_files_pyqt.material_db_gui import MaterialDbWindow
+from scripts.gui_files_pyqt.material_db_gui import MaterialDbWindow
 
 
 class MainMenu:

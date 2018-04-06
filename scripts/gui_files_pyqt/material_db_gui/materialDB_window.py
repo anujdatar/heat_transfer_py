@@ -2,8 +2,8 @@
 
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import Qt
-from scripts.gui_scripts.gui_files_pyqt.material_db_gui import MaterialTableWidget
-from scripts.gui_scripts.gui_files_pyqt.material_db_gui import VerticalSidebar
+from scripts.gui_files_pyqt.material_db_gui import MaterialTableWidget
+from scripts.gui_files_pyqt.material_db_gui import VerticalSidebar
 
 table_header = ['Name', 'Density', 'Specific Heat', 'Conductivity',
                 'Melting Point', 'Emissivity', 'Reflectivity']
