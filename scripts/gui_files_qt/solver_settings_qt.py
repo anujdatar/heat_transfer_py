@@ -14,29 +14,29 @@ class SolverFrame:
         self.solver = SolverSettings()
         self.solver_name = ''
 
-        self.boxGroup = QGroupBox('Solver Settings', self.parent)
+        self.boxGroup = QGroupBox("Solver Settings", self.parent)
         self.gridLayout = QGridLayout(self.boxGroup)
 
-        self.solverBoxGroup = QGroupBox('', self.boxGroup)
+        self.solverBoxGroup = QGroupBox("", self.boxGroup)
         self.miniLayout = QHBoxLayout(self.solverBoxGroup)
-        self.label_solver_name = QLabel('Select Solver', self.solverBoxGroup)
+        self.label_solver_name = QLabel("Select Solver", self.solverBoxGroup)
         self.label_solver_name.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.combo_solver_name = QComboBox()
         self.miniLayout.addWidget(self.label_solver_name)
         self.miniLayout.addWidget(self.combo_solver_name)
         self.solverBoxGroup.setLayout(self.miniLayout)
 
-        self.label_conv_crit = QLabel('Convergence Criterion', self.boxGroup)
+        self.label_conv_crit = QLabel("Convergence Criterion", self.boxGroup)
         self.label_conv_crit.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_conv_crit = QLineEdit(self.boxGroup)
         self.entry_conv_crit.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-        self.label_max_iter = QLabel('Max # of Iterations', self.boxGroup)
+        self.label_max_iter = QLabel("Max # of Iterations", self.boxGroup)
         self.label_max_iter.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_max_iter = QLineEdit(self.boxGroup)
         self.entry_max_iter.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-        self.label_relaxation = QLabel('Relaxation Parameter', self.boxGroup)
+        self.label_relaxation = QLabel("Relaxation Parameter", self.boxGroup)
         self.label_relaxation.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_relaxation = QLineEdit(self.boxGroup)
         self.entry_relaxation.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
@@ -55,7 +55,6 @@ class SolverFrame:
         self.boxGroup.setLayout(self.gridLayout)
 
         self.combo_solver_name.addItems(self.solver.solver_list)
-
         self.combo_solver_name.activated[str].connect(self.on_solver_select)
 
         initial_solver = self.combo_solver_name.currentText()
