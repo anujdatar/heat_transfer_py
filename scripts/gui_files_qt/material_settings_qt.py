@@ -19,15 +19,15 @@ class MaterialFrame:
 
         # %%%%%% material name selection
         self.materialNameGroup = QGroupBox("", self.boxGroup)
-        self.miniLlayout = QHBoxLayout(self.materialNameGroup)
+        self.miniLayout = QHBoxLayout(self.materialNameGroup)
         self.label_materialName = QLabel("Select Material",
                                          self.materialNameGroup)
         self.label_materialName.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         self.combo_materialName = QComboBox(self.materialNameGroup)
         self.combo_materialName.setFixedWidth(250)
-        self.miniLlayout.addWidget(self.label_materialName)
-        self.miniLlayout.addWidget(self.combo_materialName)
-        self.materialNameGroup.setLayout(self.miniLlayout)
+        self.miniLayout.addWidget(self.label_materialName)
+        self.miniLayout.addWidget(self.combo_materialName)
+        self.materialNameGroup.setLayout(self.miniLayout)
 
         # %%%%%% material settings fields
         # material density
@@ -36,6 +36,7 @@ class MaterialFrame:
         self.label_density_units = QLabel("kg/m^3", self.boxGroup)
         self.label_density_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_density = QLineEdit(self.boxGroup)
+        self.entry_density.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # specific heat or heat capacity
         self.label_spHeat = QLabel("Specific Heat", self.boxGroup)
@@ -43,6 +44,7 @@ class MaterialFrame:
         self.label_spHeat_units = QLabel("J/kg.K", self.boxGroup)
         self.label_spHeat_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_spHeat = QLineEdit(self.boxGroup)
+        self.entry_spHeat.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # thermal conductivity
         self.label_thermalC = QLabel("Thermal Conductivity", self.boxGroup)
@@ -50,6 +52,7 @@ class MaterialFrame:
         self.label_thermalC_units = QLabel("W/m.K", self.boxGroup)
         self.label_thermalC_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_thermalC = QLineEdit(self.boxGroup)
+        self.entry_thermalC.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # melting point
         self.label_meltPoint = QLabel("Melting Point", self.boxGroup)
@@ -57,6 +60,7 @@ class MaterialFrame:
         self.label_meltPoint_units = QLabel("K", self.boxGroup)
         self.label_meltPoint_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_meltPoint = QLineEdit(self.boxGroup)
+        self.entry_meltPoint.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # emissivity
         self.label_emissivity = QLabel("Emissivity", self.boxGroup)
@@ -64,6 +68,7 @@ class MaterialFrame:
         self.label_emissivity_units = QLabel("(0-1)", self.boxGroup)
         self.label_emissivity_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_emissivity = QLineEdit(self.boxGroup)
+        self.entry_emissivity.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # reflectivity
         self.label_reflect = QLabel("Reflectivity", self.boxGroup)
@@ -71,6 +76,7 @@ class MaterialFrame:
         self.label_reflect_units = QLabel("(0-1)", self.boxGroup)
         self.label_reflect_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_reflect = QLineEdit(self.boxGroup)
+        self.entry_reflect.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # blank label for spacing
         self.label_blank = QLabel("", self.boxGroup)
@@ -104,7 +110,9 @@ class MaterialFrame:
 
         self.boxGroup.setLayout(self.gridLayout)
         self.combo_materialName.activated[str].connect(self.on_material_select)
-        print(str(self.combo_materialName))
+
+        initial_material = self.combo_materialName.currentText()
+        self.on_material_select(initial_material)
 
     def update_material_combobox(self):
         self.combo_materialName.clear()
