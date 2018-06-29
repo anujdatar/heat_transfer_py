@@ -32,7 +32,7 @@ class MaterialFrame:
         self.label_Density.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_Density = QLineEdit(self.boxGroup)
 
-        self.label_spHeat = QLabel('Specific Heat (J/Kg.K)', self.boxGroup)
+        self.label_spHeat = QLabel('Specific Heat (J/kg.K)', self.boxGroup)
         self.label_spHeat.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.entry_spHeat = QLineEdit(self.boxGroup)
 

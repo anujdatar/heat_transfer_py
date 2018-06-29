@@ -113,7 +113,7 @@ class MainAppTk(object):
         self.topbox_about_window = tk.Toplevel(self.master)
         self.topbox_about_window.transient(self.master)
 
-# if __name__ == '__main__':
-#     root = tk.Tk()
-#     MainAppTk(root)
-#     root.mainloop()
+if __name__ == '__main__':
+    root = tk.Tk()
+    MainAppTk(root)
+    root.mainloop()

@@ -3,7 +3,6 @@
 """ Main App """
 
 import tkinter as tk
-
 from scripts import MainAppTk
 
 
