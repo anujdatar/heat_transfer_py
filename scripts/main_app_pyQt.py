@@ -37,14 +37,14 @@ class MainAppQt(QMainWindow):
         # %%%%%%%%%% print button
         button_print = QPushButton('Print', self)
         button_print.setToolTip('Print some stuff to console')
-        button_print.setGeometry(600, 600, 100, 30)
+        button_print.setGeometry(400, 400, 100, 30)
         # button_quit.resize(100, 100)
         button_print.clicked.connect(self.print_shit)
 
         # %%%%%%%%%% quit button
         button_quit = QPushButton('Quit', self)
         button_quit.setToolTip('Close Program')
-        button_quit.setGeometry(720, 600, 100, 30)
+        button_quit.setGeometry(520, 400, 100, 30)
         # button_quit.resize(100, 100)
         button_quit.clicked.connect(self.close_all)
 
