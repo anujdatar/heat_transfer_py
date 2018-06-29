@@ -70,3 +70,18 @@ class MaterialProperties:
                     _new_name = _new_name[:-len(_last_entry)-3]
             _new_name = "%s (%s)" % (_new_name, _material_version+1)
         return _new_name
+
+
+def material_db_reader():
+    header = ["Material", "Density", "Specific Heat", "Conductivity",
+              "Melting Point", "Emissivity", "Reflectivity"]
+
+    data = []
+    material_file = "./data/materials.json"
+    with open(material_file, 'r') as _jsfile:
+        _database = json.load(_jsfile)
+
+    for _name_key, _value in _database:
+        material_name = _name_key
+        for _value_key in _value:
+

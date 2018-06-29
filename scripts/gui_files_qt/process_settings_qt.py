@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from PySide2.QtWidgets import (QGroupBox, QGridLayout, QLineEdit, QLabel)
+from PySide2.QtWidgets import QGroupBox, QGridLayout, QLineEdit, QLabel
 from PySide2.QtCore import Qt
 from scripts.import_settings import ProcessSettings
 
@@ -18,7 +18,8 @@ class ProcessFrame:
         self.label_laser_power = QLabel("Laser Power", self.boxGroup)
         self.label_laser_power.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.label_laser_power_units = QLabel("W", self.boxGroup)
-        self.label_laser_power_units.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        self.label_laser_power_units.setAlignment(
+            Qt.AlignLeft | Qt.AlignVCenter)
         self.entry_laser_power = QLineEdit(self.boxGroup)
         self.entry_laser_power.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
@@ -72,6 +73,8 @@ class ProcessFrame:
 
         self.boxGroup.setLayout(self.gridLayout)
         self.update_process_settings()
+
+        print("process", self.boxGroup.minimumSizeHint())
 
     def update_process_settings(self):
         self.entry_laser_power.setText(str(self.process.laser_power))

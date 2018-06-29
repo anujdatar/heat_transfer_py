@@ -55,18 +55,18 @@ class SolverFrame:
         self.boxGroup.setLayout(self.gridLayout)
 
         self.combo_solver_name.addItems(self.solver.solver_list)
-        self.combo_solver_name.activated[str].connect(self.on_solver_select)
+        self.combo_solver_name.currentTextChanged.connect(self.on_solver_select)
 
-        initial_solver = self.combo_solver_name.currentText()
-        self.on_solver_select(initial_solver)
+        self.on_solver_select()
+        print("solver", self.boxGroup.minimumSizeHint())
 
     def update_solver_combobox(self):
         self.combo_solver_name.clear()
         self.solver.get_solver_list()
         self.combo_solver_name.addItems(self.solver.solver_list)
 
-    def on_solver_select(self, text):
-        self.solver_name = text
+    def on_solver_select(self):
+        self.solver_name = self.combo_solver_name.currentText()
         self.solver.read_from_json(self.solver_name)
         self.entry_conv_crit.setText(str(self.solver.convergence_criterion))
         self.entry_max_iter.setText(str(self.solver.maximum_iterations))

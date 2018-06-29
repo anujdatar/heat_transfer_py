@@ -109,18 +109,19 @@ class MaterialFrame:
         self.gridLayout.addWidget(self.label_reflect_units, 3, 6)
 
         self.boxGroup.setLayout(self.gridLayout)
-        self.combo_materialName.activated[str].connect(self.on_material_select)
+        self.combo_materialName.currentTextChanged.connect(
+            self.on_material_select)
 
-        initial_material = self.combo_materialName.currentText()
-        self.on_material_select(initial_material)
+        self.on_material_select()
+        print("material", self.boxGroup.minimumSizeHint())
 
     def update_material_combobox(self):
         self.combo_materialName.clear()
         self.material.get_material_list()
         self.combo_materialName.addItems(self.material.material_list)
 
-    def on_material_select(self, text):
-        self.material_name = text
+    def on_material_select(self):
+        self.material_name = self.combo_materialName.currentText()
         self.material.read_from_json(self.material_name)
         self.entry_density.setText(str(self.material.density))
         self.entry_spHeat.setText(str(self.material.specific_heat))
