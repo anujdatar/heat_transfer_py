@@ -39,7 +39,7 @@ class MainAppQt(QMainWindow):
         button_print.setToolTip('Print some stuff to console')
         button_print.setGeometry(400, 400, 100, 30)
         # button_quit.resize(100, 100)
-        button_print.clicked.connect(self.print_shit)
+        button_print.clicked.connect(self.console_print)
 
         # %%%%%%%%%% quit button
         button_quit = QPushButton('Quit', self)
@@ -51,13 +51,13 @@ class MainAppQt(QMainWindow):
         self.show()
 
     @pyqtSlot(bool)
-    def print_shit(self):
+    def console_print(self):
         print(self.geometry())
-        print('yay something worked')
+        print('yay print button worked')
 
     @pyqtSlot(bool)
     def close_all(self):
-        print('\n\naaaaaaa!!! Rage Quit')
+        print('\n\nGoodbye!!')
         sys.exit()
 
 
