@@ -87,10 +87,6 @@ celerybeat-schedule
 venv/
 ENV/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
 # Rope project settings
 .ropeproject
 
@@ -100,5 +96,12 @@ ENV/
 # mypy
 .mypy_cache/
 
-# JetBrains project files
+# IDE settings
+.vscode
+.atom
 .idea
+.spyderproject
+.spyproject
+
+# Misc files and folders
+tmp/
